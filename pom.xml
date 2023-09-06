@@ -12,9 +12,9 @@
 	<artifactId>claudio-portfolio</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>claudio-portfolio</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Project of a portfolio</description>
 	<properties>
-		<java.version>17</java.version>
+		<java.version>20</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
