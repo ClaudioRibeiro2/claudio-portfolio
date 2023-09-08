@@ -19,6 +19,13 @@ public class Main {
     } // Fim do método main
 
     // Métodos
+    public record Potencia(double cilindrada, int cavalos, int KMporLitro){}
+    public record Resposta (
+            String veiculo,
+            List<String> Marcas,
+            Potencia potencia
+    ){} // Fim do record Resposta
+
     @GetMapping("/API") // Para expor o método para ser um rest endpoint para clientes conseguirem utilizar get requests
     public Resposta resp (){
         Resposta response = new Resposta(
@@ -28,11 +35,4 @@ public class Main {
         );
         return response;
     } // Fim do método resp(), resp recebe o record Resposta()
-
-    record Potencia(double cilindrada, int cavalos, int KMporLitro){}
-    record Resposta (
-            String veiculo,
-            List<String> Marcas,
-            Potencia potencia
-    ){} // Fim do record Resposta
 } // Fim da classe Main
