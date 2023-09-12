@@ -2,9 +2,7 @@ package com.portfolio;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,8 +24,29 @@ public class Main {
         System.out.println("Projeto inicializado!");
     } // Fim do método main
     // Métodos
+    // API GET
     @GetMapping
     public List<Cliente> getClientes(){
         return clienteRepository.findAll();
+    }
+    // API SEND
+    record NovoClienteRequest(
+            String nome,
+            String email,
+            Integer idade
+    ){}
+    @PostMapping
+    public void criarCliente (@RequestBody NovoClienteRequest clienteRequest){
+        Cliente addCliente = new Cliente();
+        addCliente.setNome(clienteRequest.nome);
+        addCliente.setEmail(clienteRequest.email);
+        addCliente.setIdade(clienteRequest.idade);
+        clienteRepository.save(addCliente);
+    }
+    // API DELETE
+    //                         O q vai receber do cliente
+    @DeleteMapping("{clienteId}")
+    public void excluirCliente(@PathVariable("clienteId") Integer id){
+        clienteRepository.deleteById(id);
     }
 } // Fim da classe Main
