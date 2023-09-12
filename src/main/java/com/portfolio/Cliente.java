@@ -1,9 +1,14 @@
 package com.portfolio;
 
 import jakarta.persistence.*;
-
 import java.util.Objects;
 
+// comando para entrar no docker -> docker exec -it postgres bash
+// comando para entrar no sql    -> psql -U (db server)
+// listar os databases           -> /l
+// entrar em um database         -> \c\ (nome do db)
+// listar as relações            -> \d
+// você consegue fazer comandos neste bash.
 @Entity
 public class Cliente {
     // Atributos
@@ -32,8 +37,7 @@ public class Cliente {
     }
 
     // Getter's & Setter's
-    public Integer getId() { return id;
-    }
+    public Integer getId() { return id; }
     public void setId(Integer id) {
         this.id = id;
     }
@@ -67,7 +71,6 @@ public class Cliente {
         Cliente cliente = (Cliente) o;
         return Objects.equals(id, cliente.id) && Objects.equals(nome, cliente.nome) && Objects.equals(email, cliente.email) && Objects.equals(idade, cliente.idade);
     }
-
     @Override
     public int hashCode() {
         return Objects.hash(id, nome, email, idade);
